@@ -13,6 +13,7 @@ angular.module('ionic-datepicker.provider', [])
       templateType: 'popup',
       showTodayButton: false,
       closeOnSelect: false,
+      clearOnClose: false,
       disableWeekdays: []
     };
 
@@ -213,6 +214,9 @@ angular.module('ionic-datepicker.provider', [])
       }
 
       $scope.closeIonicDatePickerModal = function () {
+        if ($scope.mainObj.clearOnClose) {
+          $scope.mainObj.callback(void 0);
+        }
         closeModal();
       };
 
